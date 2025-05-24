@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>i_love_you</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #ffe6f2;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        
+        .contenedor {
+            text-align: center;
+            position: relative;
+        }
+        
+        .corazon {
+            font-size: 100px;
+            color: #ff4d6d;
+            cursor: pointer;
+            animation: latido 1.2s infinite;
+            text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+            transition: all 0.3s;
+            position: relative;
+            z-index: 10;
+        }
+        
+        @keyframes latido {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1.2); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .corazon:hover {
+            color: #ff002b;
+            animation: latido-rapido 0.8s infinite;
+        }
+        
+        @keyframes latido-rapido {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.15); }
+            50% { transform: scale(1.3); }
+            75% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+        
+        .particula {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #ff4d6d;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .mensaje {
+            margin-top: 15px;
+            font-size: 20px;
+            color: #c9184a;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        
+        .brillo {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
+            filter: blur(5px);
+            opacity: 0.7;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedore">
+        <div class="corazon" id="corazon">💗</div>
+        <div class="mensaje" id="mensaje">¡Te amo mucho!</div>
+    </div>
+
+    <script>
+        const corazon = document.getElementById('corazon');
+        const mensaje = document.getElementById('mensaje');
+        
+        // Efecto de partículas al hacer clic
+        corazon.addEventListener('click', function(e) {
+            // Mostrar mensaje
+            mensaje.style.opacity = '1';
+            setTimeout(() => {
+                mensaje.style.opacity = '0';
+            }, 2000);
+            
+            // Crear partículas
+            for (let i = 0; i < 20; i++) {
+                crearParticula(e.clientX, e.clientY);
+            }
+            
+            // Efecto de brillo
+            const brillo = document.createElement('div');
+            brillo.className = 'brillo';
+            brillo.style.left = (e.clientX - 15) + 'px';
+            brillo.style.top = (e.clientY - 15) + 'px';
+            document.body.appendChild(brillo);
+            
+            setTimeout(() => {
+                brillo.remove();
+            }, 1000);
+        });
+        
+        // Crear partículas de amor
+        function crearParticula(x, y) {
+            const particula = document.createElement('div');
+            particula.className = 'particula';
+            particula.style.left = x + 'px';
+            particula.style.top = y + 'px';
+            
+            // Color aleatorio (rojos/rosas)
+            const tono = Math.floor(Math.random() * 60) + 200;
+            particula.style.background = `rgb(255, ${tono - 100}, ${tono})`;
+            
+            // Tamaño aleatorio
+            const size = Math.random() * 8 + 2;
+            particula.style.width = size + 'px';
+            particula.style.height = size + 'px';
+            
+            // Animación
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 5 + 2;
+            const lifetime = Math.random() * 1000 + 500;
+            
+            particula.style.transform = `translate(${Math.cos(angle) * velocity}px, ${Math.sin(angle) * velocity}px)`;
+            
+            document.body.appendChild(particula);
+            
+            // Animación
+            let start = null;
+            function animar(timestamp) {
+                if (!start) start = timestamp;
+                const progress = timestamp - start;
+                
+                particula.style.opacity = 1 - (progress / lifetime);
+                particula.style.transform = `translate(${Math.cos(angle) * velocity * (progress/100)}px, 
+                                          ${Math.sin(angle) * velocity * (progress/100) - (progress/20)}px)`;
+                
+                if (progress < lifetime) {
+                    requestAnimationFrame(animar);
+                } else {
+                    particula.remove();
+                }
+            }
+            
+            requestAnimationFrame(animar);
+        }
+        
+        // Latido automático con variación natural
+        function variarLatido() {
+            const velocidad = Math.random() * 200 + 1000;
+            corazon.style.animationDuration = `${velocidad}ms`;
+            
+            setTimeout(variarLatido, 3000); 
+
+        }
+        
+        variarLatido();
+    </script>
+</body>
+
+
+</iframe>
+</html>
+      
