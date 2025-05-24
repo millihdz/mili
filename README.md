@@ -1,1 +1,154 @@
+[Up<!DOCTYPE html>
+<html>
+        <title>te_amo</title>
+      
+       <style>
+        .h1 { 
+            
+     font-family: 'Dancing Script', cursive;
+            color: #e84393;
+            text-align: left;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .p {     font-size: 1.1em;
+            line-height: 1.6;
+            color: #4d3449;
+            margin-bottom: 5px;
+        text-align: left;
+        font-size: 1.2em ;
+        }
+         .mensaje {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+      .corazon {
+            position: absolute;
+            font-size: 0;
+            cursor: pointer;
+            z-index: 2;
+            transition: all 0.3s;
+            filter: drop-shadow(0 3px 5px rgba(0,0,0,0.2));
+            animation: aparecer 1s forwards, latido 2s infinite;
+            transform-origin: center;
+        }
+        
+        @keyframes aparecer {
+            to { 
+                font-size: var(--size); 
+                opacity: 1;
+            }
+        }
+        
+        @keyframes latido {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .corazon:hover {
+            transform: scale(1.5) rotate(15deg) !important;
+            animation: none !important;
+            filter: drop-shadow(0 0 10px currentColor);
+        }
+        
+            
+       </style>
+      
+       <head>
+        <body>
+    
+           <h1 class="h1">Te amo mas de lo que te imaginas</h1>
+            <p class="p" >Eres lo que mas amo mi vida, te amo con toda mi almita y mi corazoncito, y quiero <br> que sepas que eres una gran mujer y una gran novia, y eres taaan lindaa <br> y perfecta en todos los sentidos.</p>
+           <p class="p" >Eres lo mas importante en mi vida cariño, soy muy feliz contigo porque <br> tu me haces muy feliz, eres el amor de mi vida.</p>
+          <p class="p" >Eres la mujer con quien quiero casarme y tener una familia, vivir juntitas y asi, <br> por ti amo de nuevo, y me encanta que seas tu a quien amo.</p>
+          
+          
+          
+           <p class="mensaje" > Mi amor por ti comenzó hace...</p>
+         
+           
+          
+    </div>
+        <span style="
+    display: inline-block;
+    padding: 4px 10px;
+    background: #fff0f5;
+    border-radius: 15px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    border: 1px solid #ffccd5;
+">
+    ❤️ <span id="contador-compacto">
+          <span id="dias">0</span> días 
+            <span id="horas">0</span> horas 
+            <span id="minutos">0</span> minutos 
+            <span id="segundos">0</span> segundos
+</span>
+
+<script>
+    const inicio = new Date('2024-12-26T11:00:00'); 
+    function actualizarContador() {
+        const diff = new Date() - inicio;
+        const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((diff % (1000 * 60)) / 1000); 
+        
+        document.getElementById('contador-compacto').textContent = 
+            `${dias}d ${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+    }
+    setInterval(actualizarContador, 1000);
+    actualizarContador(); 
+
+    // Crear más corazones dinámicamente
+        function crearCorazon() {
+            const corazon = document.createElement('div');
+            corazon.className = 'corazon';
+            corazon.innerHTML = "❤️","🩷","💙","💜";
+            corazon.style.left = Math.random() * 100 + '%';
+            corazon.style.top = Math.random() * 100 + '%';
+            corazon.style.animationDelay = Math.random() * 2 + 's';
+            corazon.style.fontSize = (Math.random() * 15 + 10) + 'px';
+            document.body.appendChild(corazon);
+            
+            // Eliminar después de 5 segundos para no sobrecargar
+            setTimeout(() => {
+                corazon.remove();
+            }, 5000);
+        }
+        
+        // Crear corazones cada 800ms
+        setInterval(crearCorazon, 800) 
+        
+
+        
+    
+
+
+
+
+</script>
+
+<style>
+    .imagencita {
+position: absolute;
+right: 100px;
+top: 50px;
+    }
+</style>
+            
+        
+        <a href="love.html"> da click </a>
+       
+       <img src="lov.jpg" class="imagencita" alt="">
+    
+
+
+       </head>
+    
+</html> 
+loading index.html…]()
 
