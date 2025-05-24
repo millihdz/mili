@@ -1,1 +1,1 @@
-vista web te amo linda.com
+vista web te_amo.com
